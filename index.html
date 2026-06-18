@@ -6,11 +6,7 @@
 <title>تبريدك</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
 html,body{
     width:100%;
@@ -19,7 +15,6 @@ html,body{
     background:#f3f8ff;
 }
 
-/* Header */
 .header{
     width:100%;
     background:#fff;
@@ -41,10 +36,7 @@ html,body{
     direction:ltr;
 }
 
-.logo img{
-    width:200px;
-    display:block;
-}
+.logo img{width:200px;display:block}
 
 .center-menu{
     display:flex;
@@ -93,10 +85,8 @@ html,body{
     place-items:center;
 }
 
-/* Hero */
 .hero-image{
     background:linear-gradient(180deg,#eaf5ff,#f8fbff);
-    padding:0;
 }
 
 .hero-image img{
@@ -105,42 +95,53 @@ html,body{
     display:block;
 }
 
-/* Form */
 .order-section{
-    padding:60px 16px 75px;
-    background:linear-gradient(135deg,#edf6ff,#ffffff);
+    padding:70px 16px;
+    background:linear-gradient(180deg,#eef7ff,#ffffff);
+    direction:rtl;
 }
 
 .order-container{
     max-width:980px;
     margin:auto;
-    background:white;
-    border:1px solid #dbeafe;
+    background:#fff;
     border-radius:28px;
-    padding:36px;
-    box-shadow:0 20px 55px rgba(11,87,208,.13);
+    padding:38px;
+    border:1px solid #dbeafe;
+    box-shadow:0 25px 70px rgba(11,87,208,.14);
 }
 
-.order-title{
+.order-head{
     text-align:center;
-    margin-bottom:30px;
+    margin-bottom:32px;
 }
 
-.order-title h2{
-    color:#073b82;
+.order-badge{
+    display:inline-block;
+    background:#eaf4ff;
+    color:#0B57D0;
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+.order-head h2{
     font-size:32px;
+    color:#073b82;
     margin-bottom:8px;
 }
 
-.order-title p{
-    color:#64748b;
+.order-head p{
     font-size:16px;
+    color:#64748b;
 }
 
 .order-form{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:20px 22px;
+    gap:20px;
 }
 
 .form-group{
@@ -149,141 +150,133 @@ html,body{
     gap:8px;
 }
 
-.form-group.full{
-    grid-column:1 / 3;
-}
+.form-group.full{grid-column:1 / 3}
 
-label{
-    color:#143763;
+.form-group label{
     font-size:15px;
     font-weight:800;
+    color:#143763;
 }
 
-label span{
-    color:#ef4444;
-}
+.form-group label span{color:#ef4444}
 
-input,textarea{
+.form-group input,
+.form-group textarea{
     width:100%;
-    border:1px solid #d5e3f5;
-    background:#f8fbff;
-    border-radius:13px;
-    padding:14px 16px;
+    border:1px solid #d7e5f6;
+    background:#f9fcff;
+    border-radius:14px;
+    padding:15px 16px;
     font-size:15px;
     font-family:Tahoma,Arial,sans-serif;
     outline:none;
+    transition:.2s;
 }
 
-input{
-    height:52px;
-}
+.form-group input{height:54px}
 
-textarea{
-    height:100px;
+.form-group textarea{
+    height:105px;
     resize:none;
 }
 
-input:focus,textarea:focus{
-    border-color:#0B57D0;
+.form-group input:focus,
+.form-group textarea:focus{
     background:#fff;
-    box-shadow:0 0 0 4px rgba(11,87,208,.09);
+    border-color:#0B57D0;
+    box-shadow:0 0 0 4px rgba(11,87,208,.10);
 }
 
 .submit-btn{
     grid-column:1 / 3;
-    height:58px;
-    border:0;
+    height:60px;
+    border:none;
     border-radius:15px;
-    background:linear-gradient(135deg,#41b51b,#2d9410);
+    background:linear-gradient(135deg,#43b51b,#2f9512);
     color:#fff;
-    font-size:22px;
+    font-size:23px;
     font-weight:900;
     font-family:Tahoma,Arial,sans-serif;
     cursor:pointer;
+    box-shadow:0 15px 35px rgba(47,149,18,.24);
 }
 
-.benefits{
-    margin-top:24px;
+.form-trust{
+    margin-top:22px;
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:12px;
 }
 
-.benefit{
-    background:#f1f7ff;
+.form-trust div{
+    background:#f2f8ff;
     border:1px solid #dbeafe;
     color:#073b82;
     border-radius:14px;
-    padding:14px 8px;
+    padding:14px;
     text-align:center;
     font-weight:800;
     font-size:15px;
 }
 
-/* Footer */
 .footer-banner{
-    background:linear-gradient(90deg,#073b82,#0B57D0);
-    color:white;
+    background:#073b82;
+    padding:0 16px 26px;
+}
+
+.footer-inner{
+    max-width:1200px;
+    margin:auto;
+    background:linear-gradient(135deg,#084ba5,#0B57D0);
+    border-radius:28px 28px 0 0;
+    padding:28px 42px;
     display:grid;
-    grid-template-columns:260px 1fr 220px;
+    grid-template-columns:220px 1fr 280px;
     align-items:center;
-    gap:20px;
-    padding:20px 55px;
-}
-
-.footer-right{
-    text-align:right;
-}
-
-.footer-right h4{
-    font-size:18px;
-    margin-bottom:5px;
-}
-
-.footer-right p,
-.footer-center p{
-    color:#dbeafe;
-    font-size:15px;
-}
-
-.footer-center{
-    text-align:center;
-}
-
-.footer-center h3{
-    font-size:25px;
-    margin-bottom:5px;
+    gap:25px;
+    color:#fff;
+    box-shadow:0 -12px 35px rgba(11,87,208,.18);
 }
 
 .footer-logo img{
-    width:155px;
+    width:160px;
     display:block;
 }
 
-/* Laptop */
-@media(max-width:1200px){
-    .logo img{
-        width:175px;
-    }
+.footer-text{text-align:center}
 
-    .navbar{
-        height:76px;
-    }
-
-    .item{
-        font-size:16px;
-    }
+.footer-text h3{
+    font-size:28px;
+    margin-bottom:6px;
+    font-weight:900;
 }
 
-/* iPad */
+.footer-text p{
+    font-size:17px;
+    color:#dbeafe;
+}
+
+.footer-info{
+    text-align:right;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.footer-info strong{font-size:18px}
+
+.footer-info span{
+    font-size:15px;
+    color:#dbeafe;
+}
+
 @media(max-width:900px){
     .navbar{
+        height:74px;
         padding:0 18px;
     }
 
-    .logo img{
-        width:155px;
-    }
+    .logo img{width:160px}
 
     .center-menu{
         gap:14px;
@@ -295,20 +288,10 @@ input:focus,textarea:focus{
 
     .order-btn{
         font-size:16px;
-        padding:10px 16px;
-    }
-
-    .order-container{
-        max-width:94%;
-    }
-
-    .footer-banner{
-        grid-template-columns:210px 1fr 170px;
-        padding:20px 25px;
+        padding:9px 15px;
     }
 }
 
-/* Phone */
 @media(max-width:768px){
 
     .navbar{
@@ -316,13 +299,9 @@ input:focus,textarea:focus{
         padding:0 12px;
     }
 
-    .logo img{
-        width:125px;
-    }
+    .logo img{width:125px}
 
-    .center-menu{
-        display:none;
-    }
+    .center-menu{display:none}
 
     .order-btn{
         font-size:14px;
@@ -336,10 +315,6 @@ input:focus,textarea:focus{
         font-size:14px;
     }
 
-    .hero-image{
-        background:#eaf5ff;
-    }
-
     .hero-image img{
         width:100%;
         height:auto;
@@ -349,25 +324,20 @@ input:focus,textarea:focus{
     }
 
     .order-section{
-        padding:34px 10px 50px;
+        padding:38px 12px;
     }
 
     .order-container{
-        max-width:100%;
-        padding:22px 14px;
-        border-radius:20px;
+        padding:24px 15px;
+        border-radius:22px;
     }
 
-    .order-title{
-        margin-bottom:22px;
-    }
-
-    .order-title h2{
+    .order-head h2{
         font-size:23px;
     }
 
-    .order-title p{
-        font-size:13px;
+    .order-head p{
+        font-size:14px;
         line-height:1.8;
     }
 
@@ -381,51 +351,36 @@ input:focus,textarea:focus{
         grid-column:1;
     }
 
-    label{
+    .form-group input{
+        height:50px;
+    }
+
+    .form-group input,
+    .form-group textarea{
         font-size:14px;
-    }
-
-    input{
-        height:48px;
-    }
-
-    input,textarea{
-        font-size:14px;
-        border-radius:11px;
-        padding:12px 13px;
-    }
-
-    textarea{
-        height:85px;
-    }
-
-    .submit-btn{
-        height:52px;
-        font-size:19px;
         border-radius:12px;
     }
 
-    .benefits{
-        grid-template-columns:1fr;
-        gap:9px;
-        margin-top:18px;
+    .submit-btn{
+        height:54px;
+        font-size:19px;
     }
 
-    .benefit{
-        font-size:14px;
-        padding:12px;
+    .form-trust{
+        grid-template-columns:1fr;
+        gap:9px;
     }
 
     .footer-banner{
-        display:flex;
-        flex-direction:column;
-        text-align:center;
-        gap:10px;
-        padding:22px 12px;
+        padding:0 10px 20px;
     }
 
-    .footer-right{
+    .footer-inner{
+        grid-template-columns:1fr;
         text-align:center;
+        padding:26px 16px;
+        border-radius:22px 22px 0 0;
+        gap:14px;
     }
 
     .footer-logo img{
@@ -433,37 +388,21 @@ input:focus,textarea:focus{
         margin:auto;
     }
 
-    .footer-center h3{
-        font-size:20px;
+    .footer-info{
+        text-align:center;
     }
 
-    .footer-right h4{
-        font-size:15px;
-    }
-
-    .footer-right p,
-    .footer-center p{
-        font-size:13px;
-    }
-}
-
-/* Small Phone */
-@media(max-width:380px){
-    .logo img{
-        width:112px;
-    }
-
-    .order-btn{
-        font-size:13px;
-        padding:7px 10px;
-    }
-
-    .hero-image img{
-        max-height:210px;
-    }
-
-    .order-title h2{
+    .footer-text h3{
         font-size:21px;
+    }
+
+    .footer-text p,
+    .footer-info span{
+        font-size:14px;
+    }
+
+    .footer-info strong{
+        font-size:15px;
     }
 }
 </style>
@@ -473,30 +412,20 @@ input:focus,textarea:focus{
 
 <header class="header">
     <div class="navbar">
-
         <div class="logo">
             <img src="logo.png" alt="تبريدك">
         </div>
 
         <div class="center-menu">
-            <div class="item">
-                <span>❄️</span>
-                <span>تبريد صيفاً</span>
-            </div>
-
+            <div class="item"><span>❄️</span><span>تبريد صيفاً</span></div>
             <div class="line"></div>
-
-            <div class="item">
-                <span>☀️</span>
-                <span>تدفئة شتاءً</span>
-            </div>
+            <div class="item"><span>☀️</span><span>تدفئة شتاءً</span></div>
         </div>
 
         <a href="#order" class="order-btn">
             <span class="arrow">←</span>
             اطلب الآن
         </a>
-
     </div>
 </header>
 
@@ -507,13 +436,13 @@ input:focus,textarea:focus{
 <section class="order-section" id="order">
     <div class="order-container">
 
-        <div class="order-title">
+        <div class="order-head">
+            <span class="order-badge">طلب سريع وآمن</span>
             <h2>اطلب جهاز تبريدك الآن</h2>
-            <p>اترك بياناتك وسيتم التواصل معك لتأكيد الطلب والتركيب</p>
+            <p>عبّي بياناتك وسيتم التواصل معك لتأكيد الطلب والتركيب</p>
         </div>
 
         <form action="send_order.php" method="POST" class="order-form">
-
             <div class="form-group">
                 <label>الاسم الكامل <span>*</span></label>
                 <input type="text" name="full_name" placeholder="اكتب اسمك الكامل" required>
@@ -539,35 +468,36 @@ input:focus,textarea:focus{
                 <textarea name="notes" placeholder="اكتب أي ملاحظات إضافية"></textarea>
             </div>
 
-            <button type="submit" class="submit-btn">إرسال الطلب</button>
-
+            <button type="submit" class="submit-btn">إرسال الطلب الآن</button>
         </form>
 
-        <div class="benefits">
-            <div class="benefit">🛡️ ضمان 24 شهر</div>
-            <div class="benefit">✅ جودة عالية</div>
-            <div class="benefit">🎧 متابعة بعد التركيب</div>
+        <div class="form-trust">
+            <div>🛡️ ضمان 24 شهر</div>
+            <div>✅ جودة موثوقة</div>
+            <div>🎧 متابعة بعد التركيب</div>
         </div>
 
     </div>
 </section>
 
 <section class="footer-banner">
+    <div class="footer-inner">
 
-    <div class="footer-right">
-        <h4>جهاز تبريد وتسخين المياه</h4>
-        <p>راحة استخدامك... صيفاً وشتاءً</p>
+        <div class="footer-logo">
+            <img src="last.png" alt="تبريدك">
+        </div>
+
+        <div class="footer-text">
+            <h3>تبريدك.. خيارك الذكي</h3>
+            <p>لراحة تدوم صيفاً وشتاءً</p>
+        </div>
+
+        <div class="footer-info">
+            <strong>جهاز تبريد وتسخين المياه</strong>
+            <span>راحة استخدامك بأداء عالي وموثوق</span>
+        </div>
+
     </div>
-
-    <div class="footer-center">
-        <h3>تبريدك.. خيارك الذكي</h3>
-        <p>لراحة تدوم</p>
-    </div>
-
-    <div class="footer-logo">
-        <img src="last.png" alt="تبريدك">
-    </div>
-
 </section>
 
 </body>
