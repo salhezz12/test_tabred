@@ -78,8 +78,8 @@ html,body{
 .hero-slider{
     width:100%;
     background:linear-gradient(180deg,#eaf5ff,#f8fbff);
-    position:relative;
     overflow:hidden;
+    padding-bottom:10px;
 }
 
 .slider-wrap{
@@ -112,57 +112,55 @@ html,body{
     position:absolute;
     top:50%;
     transform:translateY(-50%);
-    width:46px;
-    height:46px;
+    width:36px;
+    height:36px;
     border:none;
     border-radius:50%;
-    background:rgba(11,87,208,.88);
+    background:rgba(11,87,208,.82);
     color:#fff;
-    font-size:30px;
+    font-size:22px;
     font-weight:900;
     cursor:pointer;
     z-index:5;
     display:grid;
     place-items:center;
+    line-height:1;
 }
 
 .slider-btn:hover{background:#073b82}
 
-.prev{left:18px}
-.next{right:18px}
+.prev{left:14px}
+.next{right:14px}
 
 .dots{
-    position:absolute;
-    bottom:16px;
-    left:50%;
-    transform:translateX(-50%);
+    width:100%;
+    padding:10px 0 0;
     display:flex;
+    justify-content:center;
+    align-items:center;
     gap:8px;
-    z-index:6;
     direction:ltr;
 }
 
 .dot{
-    width:12px;
-    height:12px;
+    width:10px;
+    height:10px;
     border-radius:50%;
     border:none;
-    background:rgba(255,255,255,.8);
+    background:#b8d4f8;
     cursor:pointer;
-    box-shadow:0 2px 8px rgba(0,0,0,.25);
 }
 
 .dot.active{
-    width:30px;
+    width:26px;
     border-radius:20px;
     background:#0B57D0;
 }
 
-/* PRICE IMAGE */
 .price-banner{
     width:100%;
     background:#f8fbff;
-    padding:10px 12px 25px;
+    padding:8px 12px 18px;
 }
 
 .price-banner img{
@@ -170,8 +168,8 @@ html,body{
     width:100%;
     max-width:1320px;
     margin:auto;
-    border-radius:18px;
-    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    border-radius:14px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
 }
 
 .order-section{
@@ -345,22 +343,23 @@ html,body{
     }
 
     .slide img{
-        height:230px;
+        height:310px;
         object-fit:cover;
-        object-position:center;
+        object-position:center top;
     }
 
     .slider-btn{
-        width:34px;
-        height:34px;
-        font-size:22px;
+        width:28px;
+        height:28px;
+        font-size:18px;
+        background:rgba(11,87,208,.78);
     }
 
-    .prev{left:8px}
-    .next{right:8px}
+    .prev{left:7px}
+    .next{right:7px}
 
     .dots{
-        bottom:8px;
+        padding-top:7px;
         gap:6px;
     }
 
@@ -369,14 +368,14 @@ html,body{
         height:8px;
     }
 
-    .dot.active{width:22px}
+    .dot.active{width:20px}
 
     .price-banner{
-        padding:6px 8px 15px;
+        padding:5px 8px 12px;
     }
 
     .price-banner img{
-        border-radius:12px;
+        border-radius:10px;
     }
 
     .order-section{padding:26px 10px 34px}
@@ -476,15 +475,15 @@ html,body{
 
         <button class="slider-btn prev" onclick="changeSlide(-1)">‹</button>
         <button class="slider-btn next" onclick="changeSlide(1)">›</button>
+    </div>
 
-        <div class="dots">
-            <button class="dot active" onclick="goSlide(0)"></button>
-            <button class="dot" onclick="goSlide(1)"></button>
-            <button class="dot" onclick="goSlide(2)"></button>
-            <button class="dot" onclick="goSlide(3)"></button>
-            <button class="dot" onclick="goSlide(4)"></button>
-            <button class="dot" onclick="goSlide(5)"></button>
-        </div>
+    <div class="dots">
+        <button class="dot active" onclick="goSlide(0)"></button>
+        <button class="dot" onclick="goSlide(1)"></button>
+        <button class="dot" onclick="goSlide(2)"></button>
+        <button class="dot" onclick="goSlide(3)"></button>
+        <button class="dot" onclick="goSlide(4)"></button>
+        <button class="dot" onclick="goSlide(5)"></button>
     </div>
 </section>
 
@@ -564,14 +563,15 @@ let currentSlide = 0;
 const slides = document.querySelectorAll(".slide");
 const dots = document.querySelectorAll(".dot");
 let slideTimer;
+let autoStopped = false;
 
 function showSlide(index){
-    if(index >= slides.length){ 
-        currentSlide = 0; 
-    }else if(index < 0){ 
-        currentSlide = slides.length - 1; 
-    }else{ 
-        currentSlide = index; 
+    if(index >= slides.length){
+        currentSlide = 0;
+    }else if(index < 0){
+        currentSlide = slides.length - 1;
+    }else{
+        currentSlide = index;
     }
 
     slides.forEach(slide => slide.classList.remove("active"));
@@ -581,25 +581,27 @@ function showSlide(index){
     dots[currentSlide].classList.add("active");
 }
 
+function stopAutoSlide(){
+    autoStopped = true;
+    clearInterval(slideTimer);
+}
+
 function changeSlide(step){
+    stopAutoSlide();
     showSlide(currentSlide + step);
-    resetTimer();
 }
 
 function goSlide(index){
+    stopAutoSlide();
     showSlide(index);
-    resetTimer();
 }
 
 function autoSlide(){
     slideTimer = setInterval(() => {
-        showSlide(currentSlide + 1);
+        if(!autoStopped){
+            showSlide(currentSlide + 1);
+        }
     }, 3000);
-}
-
-function resetTimer(){
-    clearInterval(slideTimer);
-    autoSlide();
 }
 
 autoSlide();
@@ -617,10 +619,12 @@ slider.addEventListener("touchend", function(e){
     let diff = startX - endX;
 
     if(Math.abs(diff) > 50){
+        stopAutoSlide();
+
         if(diff > 0){
-            changeSlide(1);
+            showSlide(currentSlide + 1);
         }else{
-            changeSlide(-1);
+            showSlide(currentSlide - 1);
         }
     }
 });
