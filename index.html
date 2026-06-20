@@ -75,7 +75,6 @@ html,body{
     place-items:center;
 }
 
-/* SLIDER */
 .hero-slider{
     width:100%;
     background:linear-gradient(180deg,#eaf5ff,#f8fbff);
@@ -127,9 +126,7 @@ html,body{
     place-items:center;
 }
 
-.slider-btn:hover{
-    background:#073b82;
-}
+.slider-btn:hover{background:#073b82}
 
 .prev{left:18px}
 .next{right:18px}
@@ -159,6 +156,22 @@ html,body{
     width:30px;
     border-radius:20px;
     background:#0B57D0;
+}
+
+/* PRICE IMAGE */
+.price-banner{
+    width:100%;
+    background:#f8fbff;
+    padding:10px 12px 25px;
+}
+
+.price-banner img{
+    display:block;
+    width:100%;
+    max-width:1320px;
+    margin:auto;
+    border-radius:18px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
 }
 
 .order-section{
@@ -331,10 +344,6 @@ html,body{
         font-size:13px;
     }
 
-    .hero-slider{
-        background:#fff;
-    }
-
     .slide img{
         height:230px;
         object-fit:cover;
@@ -360,8 +369,14 @@ html,body{
         height:8px;
     }
 
-    .dot.active{
-        width:22px;
+    .dot.active{width:22px}
+
+    .price-banner{
+        padding:6px 8px 15px;
+    }
+
+    .price-banner img{
+        border-radius:12px;
     }
 
     .order-section{padding:26px 10px 34px}
@@ -384,9 +399,7 @@ html,body{
 
     .form-group label{font-size:12px}
 
-    .form-group input{
-        height:40px;
-    }
+    .form-group input{height:40px}
 
     .form-group input,
     .form-group textarea{
@@ -411,8 +424,6 @@ html,body{
         font-size:12px;
         padding:9px;
     }
-
-    .footer-banner{padding:0 10px 18px}
 
     .footer-inner{
         grid-template-columns:1fr;
@@ -475,6 +486,10 @@ html,body{
             <button class="dot" onclick="goSlide(5)"></button>
         </div>
     </div>
+</section>
+
+<section class="price-banner">
+    <img src="price.png" alt="عرض السعر">
 </section>
 
 <section class="order-section" id="order">
@@ -551,9 +566,13 @@ const dots = document.querySelectorAll(".dot");
 let slideTimer;
 
 function showSlide(index){
-    if(index >= slides.length){ currentSlide = 0; }
-    else if(index < 0){ currentSlide = slides.length - 1; }
-    else{ currentSlide = index; }
+    if(index >= slides.length){ 
+        currentSlide = 0; 
+    }else if(index < 0){ 
+        currentSlide = slides.length - 1; 
+    }else{ 
+        currentSlide = index; 
+    }
 
     slides.forEach(slide => slide.classList.remove("active"));
     dots.forEach(dot => dot.classList.remove("active"));
@@ -585,7 +604,6 @@ function resetTimer(){
 
 autoSlide();
 
-/* سحب بالموبايل */
 let startX = 0;
 let endX = 0;
 const slider = document.getElementById("slider");
