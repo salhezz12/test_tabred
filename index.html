@@ -1,7 +1,8 @@
 <?php
-$msg = "";
-if(isset($_GET['msg_Right'])){
-    $msg = "تم إرسال طلبك وسوف يتم التواصل معك قريباً";
+$showSuccess = false;
+
+if (isset($_GET['msg']) || isset($_GET['msg_Right'])) {
+    $showSuccess = true;
 }
 ?>
 <!DOCTYPE html>
@@ -73,6 +74,92 @@ html,body{
     border-radius:50%;
     display:grid;
     place-items:center;
+}
+
+.success-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(6,24,50,.35);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:99999;
+    opacity:0;
+    pointer-events:none;
+    transition:.35s ease;
+}
+
+.success-overlay.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.success-box{
+    width:90%;
+    max-width:390px;
+    background:#fff;
+    border-radius:26px;
+    padding:34px 22px 28px;
+    text-align:center;
+    box-shadow:0 25px 70px rgba(0,0,0,.22);
+    transform:translateY(20px) scale(.94);
+    transition:.35s ease;
+    border:1px solid #dbeafe;
+}
+
+.success-overlay.show .success-box{
+    transform:translateY(0) scale(1);
+}
+
+.paper-icon{
+    width:88px;
+    height:88px;
+    margin:0 auto 16px;
+    border-radius:22px;
+    background:linear-gradient(180deg,#eaf4ff,#ffffff);
+    border:2px solid #bcd8ff;
+    display:grid;
+    place-items:center;
+    position:relative;
+}
+
+.paper-icon::before{
+    content:"";
+    width:42px;
+    height:52px;
+    background:#fff;
+    border:3px solid #0B57D0;
+    border-radius:8px;
+    box-shadow:0 8px 18px rgba(11,87,208,.18);
+}
+
+.check-mark{
+    position:absolute;
+    width:34px;
+    height:34px;
+    background:#22c55e;
+    color:#fff;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    font-size:22px;
+    font-weight:900;
+    left:18px;
+    bottom:12px;
+    border:3px solid #fff;
+}
+
+.success-box h2{
+    color:#073b82;
+    font-size:25px;
+    margin-bottom:8px;
+    font-weight:900;
+}
+
+.success-box p{
+    color:#64748b;
+    font-size:15px;
+    line-height:1.7;
 }
 
 .hero-slider{
@@ -441,11 +528,441 @@ html,body{
     .footer-text h3{font-size:20px}
     .footer-text p,.footer-info span{font-size:13px}
     .footer-info strong{font-size:14px}
+
+    .success-box{
+        max-width:330px;
+        padding:28px 18px 24px;
+    }
+
+    .success-box h2{
+        font-size:21px;
+    }
+
+    .success-box p{
+        font-size:13px;
+    }
 }
+
+
+/* ===== Premium Order Form Upgrade ===== */
+.order-section{
+    padding:70px 16px;
+    background:
+        radial-gradient(circle at top right, rgba(11,87,208,.13), transparent 35%),
+        linear-gradient(180deg,#eef7ff,#ffffff);
+    direction:rtl;
+}
+
+.premium-order-wrap{
+    max-width:1180px;
+    margin:auto;
+}
+
+.premium-order-card{
+    display:grid;
+    grid-template-columns:1.25fr .75fr;
+    gap:0;
+    background:rgba(255,255,255,.92);
+    border:1px solid #dbeafe;
+    border-radius:34px;
+    overflow:hidden;
+    box-shadow:0 30px 85px rgba(11,87,208,.16);
+    position:relative;
+}
+
+.premium-form-side{
+    padding:38px;
+    background:linear-gradient(180deg,#ffffff,#f8fbff);
+}
+
+.premium-tag{
+    width:max-content;
+    background:#eaf4ff;
+    color:#0B57D0;
+    padding:8px 18px;
+    border-radius:50px;
+    font-size:13px;
+    font-weight:900;
+    margin-bottom:18px;
+}
+
+.premium-title-row{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:18px;
+}
+
+.premium-icon{
+    width:58px;
+    height:58px;
+    border-radius:18px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,#0B57D0,#38bdf8);
+    color:#fff;
+    font-size:28px;
+    box-shadow:0 14px 35px rgba(11,87,208,.28);
+    flex:0 0 auto;
+}
+
+.premium-title-row h2{
+    color:#073b82;
+    font-size:31px;
+    line-height:1.3;
+    font-weight:900;
+    margin-bottom:5px;
+}
+
+.premium-title-row p{
+    color:#64748b;
+    font-size:15px;
+    line-height:1.8;
+}
+
+.premium-trust-bar{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin:22px 0 24px;
+}
+
+.premium-trust-bar div{
+    background:#f2f8ff;
+    border:1px solid #dbeafe;
+    border-radius:16px;
+    padding:13px 10px;
+    text-align:center;
+}
+
+.premium-trust-bar strong{
+    display:block;
+    color:#073b82;
+    font-size:15px;
+    font-weight:900;
+    margin-bottom:3px;
+}
+
+.premium-trust-bar span{
+    display:block;
+    color:#64748b;
+    font-size:12px;
+    font-weight:700;
+}
+
+.premium-order-form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.premium-field{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.premium-field.full{
+    grid-column:1 / 3;
+}
+
+.premium-field label{
+    color:#143763;
+    font-size:13px;
+    font-weight:900;
+}
+
+.premium-field label span{
+    color:#ef4444;
+}
+
+.premium-input{
+    height:54px;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    background:#ffffff;
+    border:1px solid #d7e5f6;
+    border-radius:16px;
+    padding:0 14px;
+    box-shadow:0 8px 22px rgba(11,87,208,.055);
+    transition:.25s ease;
+}
+
+.premium-input:focus-within{
+    border-color:#0B57D0;
+    box-shadow:0 12px 30px rgba(11,87,208,.15);
+    transform:translateY(-1px);
+}
+
+.premium-input b{
+    width:30px;
+    height:30px;
+    display:grid;
+    place-items:center;
+    background:#eaf4ff;
+    border-radius:10px;
+    font-size:15px;
+    flex:0 0 auto;
+}
+
+.premium-input input,
+.premium-input textarea{
+    width:100%;
+    border:none;
+    outline:none;
+    background:transparent;
+    color:#0f172a;
+    font-size:14px;
+    font-family:Tahoma,Arial,sans-serif;
+}
+
+.textarea-box{
+    min-height:74px;
+    align-items:flex-start;
+    padding-top:12px;
+}
+
+.textarea-box textarea{
+    height:48px;
+    resize:none;
+    padding-top:4px;
+}
+
+.premium-submit-btn{
+    grid-column:1 / 3;
+    height:58px;
+    border:none;
+    border-radius:17px;
+    background:linear-gradient(135deg,#0B57D0,#073b82);
+    color:#fff;
+    font-family:Tahoma,Arial,sans-serif;
+    font-size:20px;
+    font-weight:900;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    box-shadow:0 18px 38px rgba(11,87,208,.32);
+    transition:.25s ease;
+}
+
+.premium-submit-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 22px 45px rgba(11,87,208,.42);
+}
+
+.premium-submit-btn small{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:#fff;
+    color:#0B57D0;
+    display:grid;
+    place-items:center;
+    font-size:18px;
+}
+
+.premium-bottom-note{
+    margin-top:14px;
+    color:#64748b;
+    background:#f8fbff;
+    border:1px dashed #bdd7f7;
+    border-radius:14px;
+    padding:12px;
+    text-align:center;
+    font-size:13px;
+    font-weight:800;
+}
+
+.premium-info-side{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(150deg,#073b82,#0B57D0 55%,#38bdf8);
+    color:#fff;
+    min-height:100%;
+    display:flex;
+    align-items:center;
+}
+
+.info-glow{
+    position:absolute;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    background:rgba(255,255,255,.18);
+    left:-80px;
+    top:-70px;
+}
+
+.info-content{
+    position:relative;
+    padding:38px;
+    z-index:2;
+}
+
+.info-mini{
+    display:inline-block;
+    background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.28);
+    padding:7px 15px;
+    border-radius:30px;
+    font-weight:900;
+    margin-bottom:16px;
+}
+
+.info-content h3{
+    font-size:31px;
+    line-height:1.45;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.info-content p{
+    font-size:15px;
+    line-height:1.9;
+    color:#eaf4ff;
+    margin-bottom:20px;
+}
+
+.info-points{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.info-points div{
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:14px;
+    padding:12px 14px;
+    font-weight:800;
+    backdrop-filter:blur(6px);
+}
+
+@media(max-width:900px){
+    .premium-order-card{
+        grid-template-columns:1fr;
+        border-radius:24px;
+    }
+
+    .premium-info-side{
+        display:none;
+    }
+}
+
+@media(max-width:768px){
+    .order-section{
+        padding:34px 10px 42px;
+    }
+
+    .premium-form-side{
+        padding:20px 13px;
+    }
+
+    .premium-title-row{
+        gap:10px;
+        align-items:flex-start;
+    }
+
+    .premium-icon{
+        width:46px;
+        height:46px;
+        font-size:22px;
+        border-radius:14px;
+    }
+
+    .premium-title-row h2{
+        font-size:21px;
+    }
+
+    .premium-title-row p{
+        font-size:12px;
+        line-height:1.7;
+    }
+
+    .premium-trust-bar{
+        grid-template-columns:1fr 1fr 1fr;
+        gap:6px;
+        margin:15px 0 18px;
+    }
+
+    .premium-trust-bar div{
+        padding:9px 4px;
+        border-radius:12px;
+    }
+
+    .premium-trust-bar strong{
+        font-size:11px;
+    }
+
+    .premium-trust-bar span{
+        font-size:10px;
+    }
+
+    .premium-order-form{
+        grid-template-columns:1fr;
+        gap:10px;
+    }
+
+    .premium-field.full,
+    .premium-submit-btn{
+        grid-column:1;
+    }
+
+    .premium-input{
+        height:46px;
+        border-radius:13px;
+        padding:0 10px;
+    }
+
+    .premium-input input,
+    .premium-input textarea{
+        font-size:12px;
+    }
+
+    .premium-field label{
+        font-size:12px;
+    }
+
+    .textarea-box{
+        min-height:58px;
+        padding-top:8px;
+    }
+
+    .textarea-box textarea{
+        height:38px;
+    }
+
+    .premium-submit-btn{
+        height:49px;
+        font-size:16px;
+        border-radius:14px;
+    }
+
+    .premium-bottom-note{
+        font-size:11px;
+        padding:10px;
+    }
+}
+
 </style>
 </head>
 
 <body>
+
+<?php if($showSuccess): ?>
+<div class="success-overlay" id="successOverlay">
+    <div class="success-box">
+        <div class="paper-icon">
+            <div class="check-mark">✓</div>
+        </div>
+        <h2>تم إرسال طلبك بنجاح</h2>
+        <p>وصلنا طلبك، وسيتم التواصل معك قريباً لتأكيد الطلب والتركيب.</p>
+    </div>
+</div>
+<?php endif; ?>
 
 <header class="header">
     <div class="navbar">
@@ -453,9 +970,7 @@ html,body{
             <img src="logo.png" alt="تبريدك">
         </div>
 
-        <div class="center-menu">
-            <?php echo $msg; ?>
-        </div>
+        <div class="center-menu"></div>
 
         <a href="#order" class="order-btn">
             <span class="arrow">←</span>
@@ -492,49 +1007,92 @@ html,body{
 </section>
 
 <section class="order-section" id="order">
-    <div class="order-container">
+    <div class="premium-order-wrap">
 
-        <div class="order-head">
-            <span class="order-badge">طلب سريع وآمن</span>
-            <h2>اطلب جهاز تبريدك الآن</h2>
-            <p>عبّي بياناتك وسيتم التواصل معك لتأكيد الطلب والتركيب</p>
+        <div class="premium-order-card">
+            <div class="premium-form-side">
+                <div class="premium-tag">طلب سريع وآمن</div>
+
+                <div class="premium-title-row">
+                    <div class="premium-icon">💧</div>
+                    <div>
+                        <h2>اطلب جهاز تبريدك الآن</h2>
+                        <p>عبّي البيانات وسيتم التواصل معك لتأكيد الطلب والتركيب بأسرع وقت.</p>
+                    </div>
+                </div>
+
+                <div class="premium-trust-bar">
+                    <div><strong>24 شهر</strong><span>ضمان حقيقي</span></div>
+                    <div><strong>تركيب سريع</strong><span>متابعة كاملة</span></div>
+                    <div><strong>جودة عالية</strong><span>أداء موثوق</span></div>
+                </div>
+
+                <form action="send_order.php" method="POST" class="premium-order-form">
+                    <div class="premium-field">
+                        <label>الاسم الكامل <span>*</span></label>
+                        <div class="premium-input">
+                            <b>👤</b>
+                            <input type="text" name="full_name" placeholder="اكتب اسمك الكامل" required>
+                        </div>
+                    </div>
+
+                    <div class="premium-field">
+                        <label>رقم الجوال <span>*</span></label>
+                        <div class="premium-input">
+                            <b>📱</b>
+                            <input type="tel" name="phone" placeholder="05xxxxxxxx" required>
+                        </div>
+                    </div>
+
+                    <div class="premium-field">
+                        <label>المدينة <span>*</span></label>
+                        <div class="premium-input">
+                            <b>📍</b>
+                            <input type="text" name="city" placeholder="اكتب اسم المدينة" required>
+                        </div>
+                    </div>
+
+                    <div class="premium-field">
+                        <label>العنوان <span>*</span></label>
+                        <div class="premium-input">
+                            <b>🏠</b>
+                            <input type="text" name="address" placeholder="اكتب العنوان بالتفصيل" required>
+                        </div>
+                    </div>
+
+                    <div class="premium-field full">
+                        <label>ملاحظات إضافية</label>
+                        <div class="premium-input textarea-box">
+                            <b>📝</b>
+                            <textarea name="notes" placeholder="اكتب أي ملاحظات إضافية"></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="premium-submit-btn">
+                        <span>إرسال الطلب الآن</span>
+                        <small>←</small>
+                    </button>
+                </form>
+
+                <div class="premium-bottom-note">🔒 بياناتك آمنة وسيتم استخدامها فقط للتواصل وتأكيد الطلب</div>
+            </div>
+
+            <div class="premium-info-side">
+                <div class="info-glow"></div>
+                <div class="info-content">
+                    <span class="info-mini">تبريدك</span>
+                    <h3>راحة استخدامك تبدأ من أول طلب</h3>
+                    <p>جهاز تبريد وتسخين مياه بتصميم عملي، أداء موثوق، وضمان يطمنك بعد التركيب.</p>
+
+                    <div class="info-points">
+                        <div>✅ مياه باردة وساخنة</div>
+                        <div>✅ تركيب ومتابعة</div>
+                        <div>✅ مناسب للبيت والمكتب</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-
-        <form action="send_order.php" method="POST" class="order-form">
-            <div class="form-group">
-                <label>الاسم الكامل <span>*</span></label>
-                <input type="text" name="full_name" placeholder="اكتب اسمك الكامل" required>
-            </div>
-
-            <div class="form-group">
-                <label>رقم الجوال <span>*</span></label>
-                <input type="tel" name="phone" placeholder="05xxxxxxxx" required>
-            </div>
-
-            <div class="form-group">
-                <label>المدينة <span>*</span></label>
-                <input type="text" name="city" placeholder="اكتب اسم المدينة" required>
-            </div>
-
-            <div class="form-group">
-                <label>العنوان <span>*</span></label>
-                <input type="text" name="address" placeholder="اكتب العنوان بالتفصيل" required>
-            </div>
-
-            <div class="form-group full">
-                <label>ملاحظات إضافية</label>
-                <textarea name="notes" placeholder="اكتب أي ملاحظات إضافية"></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">إرسال الطلب الآن</button>
-        </form>
-
-        <div class="form-trust">
-            <div>🛡️ ضمان 24 شهر</div>
-            <div>✅ جودة موثوقة</div>
-            <div>🎧 متابعة بعد التركيب</div>
-        </div>
-
     </div>
 </section>
 
@@ -606,28 +1164,28 @@ function autoSlide(){
 
 autoSlide();
 
-let startX = 0;
-let endX = 0;
-const slider = document.getElementById("slider");
 
-slider.addEventListener("touchstart", function(e){
-    startX = e.touches[0].clientX;
-});
+const successOverlay = document.getElementById("successOverlay");
 
-slider.addEventListener("touchend", function(e){
-    endX = e.changedTouches[0].clientX;
-    let diff = startX - endX;
 
-    if(Math.abs(diff) > 50){
-        stopAutoSlide();
+if(successOverlay){
+    setTimeout(() => {
+        successOverlay.classList.add("show");
+    }, 100);
 
-        if(diff > 0){
-            showSlide(currentSlide + 1);
-        }else{
-            showSlide(currentSlide - 1);
+    setTimeout(() => {
+        successOverlay.classList.remove("show");
+    }, 3000);
+
+    setTimeout(() => {
+        successOverlay.remove();
+
+        if(window.history.replaceState){
+            const cleanUrl = window.location.origin + window.location.pathname;
+            window.history.replaceState({}, document.title, cleanUrl);
         }
-    }
-});
+    }, 3500);
+}
 </script>
 
 </body>
